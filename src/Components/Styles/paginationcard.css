@@ -1,0 +1,32 @@
+.card-item{
+    flex-basis: 28%;
+    text-transform: capitalize;
+    color: white;
+    mix-blend-mode: multiply;
+    border-radius: 0.8rem;
+    border:2px solid;
+}
+.inner-card-item{
+    padding: 3.5rem 1rem;
+    width: 100%;
+    height: 100%;
+    font-weight: bolder;
+}
+.card-item>a{
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem;
+    align-items: center;
+    overflow: hidden;
+}
+
+.inner-card-image-container img{
+    width: 60%;
+    height: 30%;
+}
+
+@media screen and (max-width:500px) {
+    .card-item{
+        flex-basis: 90%;
+    }
+}

@@ -1,0 +1,21 @@
+.more-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+}
+.about-item {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: start;
+  width: 90%;
+  align-items: center;
+  font-weight: bolder;
+  color: white;
+  mix-blend-mode: difference;
+}
+.abilities-items {
+  display: flex;
+}
