@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Styles/paginationcard.css";
 import { Link, useNavigate } from "react-router-dom";
 import { MyFunctions } from "../Store/store";
-import PokemonContainer from "./PokemonContainer";
+import FavouriteBtn from "./FavouriteBtn";
 const PaginationCard = (props) => {
   const myCtx = MyFunctions();
   const [bgColor, setBgColor] = useState("white");
@@ -79,6 +79,7 @@ const PaginationCard = (props) => {
             <div className="inner-card-image-container">
               <img src={pokImage} alt="Pokemon" />
             </div>
+            {/* <FavouriteBtn style={{top:"1rem"}} name={props.name} url={props.url}/> */}
           </Link>
         ) : (
           <Link to={`/pokemon`}>

@@ -11,6 +11,7 @@ const StoreContext = ({ children }) => {
   const [page, setPage] = useState(0);
   const [pokBoolean, setPokBoolean] = useState(true);
   const [pokemonList, setPokemonList] = useState([]);
+  const [favPokemon, setFavPokemon] = useState(localStorage.getItem("pokemon") || []);
   const fetchData = async () => {
     try {
       const response = await fetch(

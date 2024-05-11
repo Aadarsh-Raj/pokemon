@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./Styles/pokemoncarddetails.css"
+import "./Styles/pokemoncarddetails.css";
 import BasicTabs from "./Extra";
+import FavouriteBtn from "./FavouriteBtn";
+import DetailSpeaker from "./DetailSpeaker";
 
 const PokemonCardDetails = (props) => {
   const [pokemonData, setPokemonData] = useState([]);
@@ -9,6 +11,7 @@ const PokemonCardDetails = (props) => {
   const [types, setTypes] = useState([]);
   const [species, setSpecies] = useState([]);
   const [abilities, setAbilities] = useState([]);
+  const [effect, setEffect] = useState("");
   const [pokImage, setPokImage] = useState(
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3qURmgNu3IrnPMaZdMx4FEjo-2csDvOwZxq2foEtlgGjcGML87xFFUnyI12Q-o2XMu7g&usqp=CAU"
   );
@@ -24,9 +27,10 @@ const PokemonCardDetails = (props) => {
       const data = await response.json();
       setPokemonData(data);
       setPokImage(data.sprites.other.dream_world.front_default);
-      setTypes(data.types)
+      setTypes(data.types);
       setSpecies(data.species.name);
       setAbilities(data.abilities);
+      fetchAbilitiesEffect(data.abilities[0].ability.url);
     } catch (error) {
       console.log(error);
     }
@@ -43,12 +47,23 @@ const PokemonCardDetails = (props) => {
       console.log(error);
     }
   };
+
+  const fetchAbilitiesEffect = async (url) => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setEffect(data.effect_entries[1].effect);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div
         className="pokemon-details-card"
         style={{
-          backgroundColor:"light"+ bgColor || "violet"
+          backgroundColor: "light" + bgColor || "violet",
         }}
       >
         <div className="basic-details-container">
@@ -58,6 +73,8 @@ const PokemonCardDetails = (props) => {
               <div className="type-card-item">{ele.type.name} </div>
             ))}
           </div>
+          <DetailSpeaker text={`${pokemonData.name}, "It's effect"  ${effect}`} />
+          {/* <FavouriteBtn style={{right:"1rem"}} name={pokemonData.name} url={pokemonData.url}/> */}
         </div>
         <div className="image-container">
           <img src={pokImage} alt="" />
@@ -80,4 +97,3 @@ const PokemonCardDetails = (props) => {
 };
 
 export default PokemonCardDetails;
-

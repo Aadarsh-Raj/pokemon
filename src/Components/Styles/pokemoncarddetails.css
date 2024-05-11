@@ -10,6 +10,7 @@
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
+    position: relative;
 }
 .pokemon-type-container{
     display: flex;

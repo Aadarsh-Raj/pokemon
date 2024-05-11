@@ -1,0 +1,7 @@
+.fav-btn{
+    width: max-content;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+}
